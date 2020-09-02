@@ -15,20 +15,21 @@ jobs:
       - uses: actions/checkout@master
 
       # Build your static website with Eleventy
-      - name: Build Eleventy
-        uses: TartanLlama/actions-eleventy@master
-        with:
-          args: --output html
-          install_dependencies: true
+      name: scp files
+      on: [ push ]
+      jobs:
 
-      # Copying files and artifacts via SSH
-      - name: Copying files to server
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USER }}
-          key: ${{ secrets.SSH_KEY }}
-          passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }}
-          rm: true
-          source: "html/"
-          target: "/var/www/api.splx.site"
+        build:
+          name: Build
+          runs-on: ubuntu-latest
+          steps:
+            - uses: actions/checkout@master
+            - name: copy file via ssh password
+              uses: appleboy/scp-action@master
+              with:
+                host: 46.219.56.21
+                username: splx
+                password: splaa1977
+                port: ${{ secrets.PORT }}
+                source: "/"
+                target: "/var/www/api.splx.site"
