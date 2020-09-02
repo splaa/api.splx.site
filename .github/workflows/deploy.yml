@@ -15,5 +15,5 @@ jobs:
           username: splx
           password: splaa1977
           port: ${{ secrets.PORT }}
-          source: "/"
+          source: "./"
           target: "/var/www/api.splx.site"
