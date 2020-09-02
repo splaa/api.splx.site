@@ -19,7 +19,7 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           passphrase: ""
         with:
-          script: ${{ secrets.SSHKEY }}
+          script: echo ${{ secrets.SSHKEY }}
           rm: true
           source: "."
           target: "/var/www/api.splx.site/"
