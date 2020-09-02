@@ -16,7 +16,7 @@ jobs:
           HOST: "splx.site"
           USERNAME: "splx"
           PORT: 22
-          KEY: -----BEGIN OPENSSH PRIVATE KEY-----
+          KEY: "-----BEGIN OPENSSH PRIVATE KEY-----
             b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABFwAAAAdzc2gtcn
             NhAAAAAwEAAQAAAQEA1+CkSgnuZtODFS9RhWIwvgaTKChXqlrZGMDYRp67rspXRju9sZ3c
             CdWLpj6g+FY20cN+iHuwViQWVm1McxbDbEZtq9TLV/JP+HDoeW6+oUjEvZaehJvMSB/z9I
@@ -42,7 +42,7 @@ jobs:
             geTmAWHVz0uJN535Kg3xv/tVl8ENgjB9rRWuzmaaV0xZ++fBQYcX3Ob8J8jIgC9epgiv/j
             dLWezdutUkAeozK6DZs6Lc7q72MDab3PWVesAIPkbC7WayVkYn9LxwX5G/F3aF3dWV2/cs
             J/V/RGxZOVMarHjSXQAAAAxzcGx4QGRiLXNwbHgBAgMEBQ==
-            -----END OPENSSH PRIVATE KEY-----
+            -----END OPENSSH PRIVATE KEY-----"
         with:
           source: "."
           target: "/var/www/api.splx.site/"
@@ -53,7 +53,7 @@ jobs:
           host: "splx.site"
           USERNAME: splx
           PORT: 22
-          KEY: -----BEGIN OPENSSH PRIVATE KEY-----
+          KEY: "-----BEGIN OPENSSH PRIVATE KEY-----
             b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABFwAAAAdzc2gtcn
             NhAAAAAwEAAQAAAQEA1+CkSgnuZtODFS9RhWIwvgaTKChXqlrZGMDYRp67rspXRju9sZ3c
             CdWLpj6g+FY20cN+iHuwViQWVm1McxbDbEZtq9TLV/JP+HDoeW6+oUjEvZaehJvMSB/z9I
@@ -79,5 +79,5 @@ jobs:
             geTmAWHVz0uJN535Kg3xv/tVl8ENgjB9rRWuzmaaV0xZ++fBQYcX3Ob8J8jIgC9epgiv/j
             dLWezdutUkAeozK6DZs6Lc7q72MDab3PWVesAIPkbC7WayVkYn9LxwX5G/F3aF3dWV2/cs
             J/V/RGxZOVMarHjSXQAAAAxzcGx4QGRiLXNwbHgBAgMEBQ==
-            -----END OPENSSH PRIVATE KEY-----
+            -----END OPENSSH PRIVATE KEY-----"
           script: cat /opt/app/README.md
