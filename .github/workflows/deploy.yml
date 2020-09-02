@@ -19,6 +19,7 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           passphrase: ""
         with:
+          script: ${{ secrets.SSHKEY }}
           rm: true
           source: "."
           target: "/var/www/api.splx.site/"
@@ -27,6 +28,7 @@ jobs:
       - name: Executing remote  command
         uses: appleboy/ssh-action@master
         with:
+
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
