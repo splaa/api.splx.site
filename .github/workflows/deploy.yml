@@ -18,6 +18,7 @@ jobs:
           port: ${{ secrets.PORT }}
           password: "splaa1977"
           key: ${{ secrets.SSHKEY }}
+          passphrase: ""
         with:
           rm: true
           source: "."
@@ -30,6 +31,6 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
-          password: "splaa1977"
           key: ${{ secrets.SSHKEY }}
-          script: cat /opt/app/README.md
+          passphrase: ""
+          script: cat /var/www/api.splx.site/README.md
