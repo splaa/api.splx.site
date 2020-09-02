@@ -1,35 +1,34 @@
-name: Deploy
+name: Deploy Eleventy via SSH
 
-on: [push]
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v1
+      # Checks-out your repository under $GITHUB_WORKSPACE,
+      # so your workflow can access it
+      - uses: actions/checkout@master
 
-      - name: Copy file via scp
-        uses: appleboy/scp-action@master
-        env:
-          host: "splx.site"
-          username: "splx"
-          port: 22
-          key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDX4KRKCe5m04MVL1GFYjC+BpMoKFeqWtkYwNhGnruuyldGO72xndwJ1YumPqD4VjbRw36Ie7BWJBZWbUxzFsNsRm2r1MtX8k/4cOh5br6hSMS9lp6Em8xIH/P0j/7RhHHA7NJ2l0WXr5At9452E3a7Ue55pFEKzs7l35Np+A1uo/52tfWJE/TMKsx60IOxdr7tDYuCd7B08mfesgGanflJsJNZCd/hbYE9fcIA3zSA1aEJs+oig0macX8m+gSEREnrGtLF9AACOr6AYxdujhhHMqgzPQ9aWoQIiUUywHtOuQN2d1kNN+ZWJDZmPkHDHyg6NrmHCbh8YJZfoLFHfO8b splx@db-splx"
+      # Build your static website with Eleventy
+      - name: Build Eleventy
+        uses: TartanLlama/actions-eleventy@master
         with:
-          rm: true
-          source: "."
-          target: "/var/www/api.splx.site/"
+          args: --output html
+          install_dependencies: true
 
-#
-#      - name: Executing remote  command
-#        uses: appleboy/ssh-action@master
-#        with:
-#
-#          host: ${{ secrets.HOST }}
-#          username: ${{ secrets.USERNAME }}
-#          port: ${{ secrets.PORT }}
-#          key: ${{ secrets.SSHKEY }}
-#          passphrase: ""
-#          script: cat /var/www/api.splx.site/README.md
+      # Copying files and artifacts via SSH
+      - name: Copying files to server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }}
+          rm: true
+          source: "html/"
+          target: "/var/www/api.splx.site"
