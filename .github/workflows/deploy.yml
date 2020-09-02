@@ -13,10 +13,10 @@ jobs:
       - name: Copy file via scp
         uses: appleboy/scp-action@master
         env:
-          HOST: ${{ secrets.HOST }}
-          USERNAME: ${{ secrets.USERNAME }}
-          PORT: ${{ secrets.PORT }}
-          KEY: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDX4KRKCe5m04MVL1GFYjC+BpMoKFeqWtkYwNhGnruuyldGO72xndwJ1YumPqD4VjbRw36Ie7BWJBZWbUxzFsNsRm2r1MtX8k/4cOh5br6hSMS9lp6Em8xIH/P0j/7RhHHA7NJ2l0WXr5At9452E3a7Ue55pFEKzs7l35Np+A1uo/52tfWJE/TMKsx60IOxdr7tDYuCd7B08mfesgGanflJsJNZCd/hbYE9fcIA3zSA1aEJs+oig0macX8m+gSEREnrGtLF9AACOr6AYxdujhhHMqgzPQ9aWoQIiUUywHtOuQN2d1kNN+ZWJDZmPkHDHyg6NrmHCbh8YJZfoLFHfO8b splx@db-splx
+          HOST: "splx.site"
+          USERNAME: "splx"
+          PORT: 22
+          KEY: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDX4KRKCe5m04MVL1GFYjC+BpMoKFeqWtkYwNhGnruuyldGO72xndwJ1YumPqD4VjbRw36Ie7BWJBZWbUxzFsNsRm2r1MtX8k/4cOh5br6hSMS9lp6Em8xIH/P0j/7RhHHA7NJ2l0WXr5At9452E3a7Ue55pFEKzs7l35Np+A1uo/52tfWJE/TMKsx60IOxdr7tDYuCd7B08mfesgGanflJsJNZCd/hbYE9fcIA3zSA1aEJs+oig0macX8m+gSEREnrGtLF9AACOr6AYxdujhhHMqgzPQ9aWoQIiUUywHtOuQN2d1kNN+ZWJDZmPkHDHyg6NrmHCbh8YJZfoLFHfO8b splx@db-splx"
         with:
           source: "."
           target: "/var/www/api.splx.site/"
@@ -24,8 +24,8 @@ jobs:
       - name: Executing remote  command
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST }}
-          USERNAME: ${{ secrets.USERNAME }}
-          PORT: ${{ secrets.PORT }}
-          KEY: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDX4KRKCe5m04MVL1GFYjC+BpMoKFeqWtkYwNhGnruuyldGO72xndwJ1YumPqD4VjbRw36Ie7BWJBZWbUxzFsNsRm2r1MtX8k/4cOh5br6hSMS9lp6Em8xIH/P0j/7RhHHA7NJ2l0WXr5At9452E3a7Ue55pFEKzs7l35Np+A1uo/52tfWJE/TMKsx60IOxdr7tDYuCd7B08mfesgGanflJsJNZCd/hbYE9fcIA3zSA1aEJs+oig0macX8m+gSEREnrGtLF9AACOr6AYxdujhhHMqgzPQ9aWoQIiUUywHtOuQN2d1kNN+ZWJDZmPkHDHyg6NrmHCbh8YJZfoLFHfO8b splx@db-splx
+          host: "splx.site"
+          USERNAME: splx
+          PORT: 22
+          KEY: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDX4KRKCe5m04MVL1GFYjC+BpMoKFeqWtkYwNhGnruuyldGO72xndwJ1YumPqD4VjbRw36Ie7BWJBZWbUxzFsNsRm2r1MtX8k/4cOh5br6hSMS9lp6Em8xIH/P0j/7RhHHA7NJ2l0WXr5At9452E3a7Ue55pFEKzs7l35Np+A1uo/52tfWJE/TMKsx60IOxdr7tDYuCd7B08mfesgGanflJsJNZCd/hbYE9fcIA3zSA1aEJs+oig0macX8m+gSEREnrGtLF9AACOr6AYxdujhhHMqgzPQ9aWoQIiUUywHtOuQN2d1kNN+ZWJDZmPkHDHyg6NrmHCbh8YJZfoLFHfO8b splx@db-splx"
           script: cat /opt/app/README.md
