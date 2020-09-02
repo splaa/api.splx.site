@@ -1,0 +1,83 @@
+name: Deploy
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Copy file via scp
+        uses: appleboy/scp-action@master
+        env:
+          HOST: ${{ secrets.HOST }}
+          USERNAME: ${{ secrets.USERNAME }}
+          PORT: ${{ secrets.PORT }}
+          KEY: -----BEGIN OPENSSH PRIVATE KEY-----
+b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABFwAAAAdzc2gtcn
+NhAAAAAwEAAQAAAQEA1+CkSgnuZtODFS9RhWIwvgaTKChXqlrZGMDYRp67rspXRju9sZ3c
+CdWLpj6g+FY20cN+iHuwViQWVm1McxbDbEZtq9TLV/JP+HDoeW6+oUjEvZaehJvMSB/z9I
+/+0YRxwOzSdpdFl6+QLfeOdhN2u1HueaRRCs7O5d+TafgNbqP+drX1iRP0zCrMetCDsXa+
+7Q2LgnewdPJn3rIBmp35SbCTWQnf4W2BPX3CAN80gNWhCbPqIoNJmnF/JvoEhERJ6xrSxf
+QAAjq+gGMXbo4YRzKoMz0PWlqECIlFMsB7TrkDdndZDTfmViQ2Zj5Bwx8oOja5hwm4fGCW
+X6CxR3zvGwAAA8jL+zHxy/sx8QAAAAdzc2gtcnNhAAABAQDX4KRKCe5m04MVL1GFYjC+Bp
+MoKFeqWtkYwNhGnruuyldGO72xndwJ1YumPqD4VjbRw36Ie7BWJBZWbUxzFsNsRm2r1MtX
+8k/4cOh5br6hSMS9lp6Em8xIH/P0j/7RhHHA7NJ2l0WXr5At9452E3a7Ue55pFEKzs7l35
+Np+A1uo/52tfWJE/TMKsx60IOxdr7tDYuCd7B08mfesgGanflJsJNZCd/hbYE9fcIA3zSA
+1aEJs+oig0macX8m+gSEREnrGtLF9AACOr6AYxdujhhHMqgzPQ9aWoQIiUUywHtOuQN2d1
+kNN+ZWJDZmPkHDHyg6NrmHCbh8YJZfoLFHfO8bAAAAAwEAAQAAAQEAqu2Ix8LTTAF/Ud/U
+iWs0stFb5TkEKLOkH7BZzpjSfFRkBA07Zo5ackLuPuRp6hfBchd7ca+V8K7ELQx/ssS8WV
+fucFad5vXKkik8OSIRuHx4orDGtLLzbcw3ClaVaemXdC1Pe2zNQoxU+cCAwUcqBKmbzB7p
+uEgFlAeRnh8063tjWAjPSmMUwVfcgLrt5mBawGKNlg3f2sMcBOUNZKnulsxC9fsW1stRim
+ZOIQr7q4m31GSC2ontKm1Avo3wNW7aIdMiv4EW2HIbaj7VjYL9QUUE+fwnQRb7BRZ+XGd/
+i82OIjFjPubAet9oSjiAsu0s8bbfZ2n8HeEXgqzVZDrmOQAAAIEA4cIjE7gWb1cv2RApDb
+NNOK58cvlOLadQtOjMbRCpgGhN+u1/iUSQmb/UxiJN7EPYr3DhV08+N1IdQqEcWIxozYzx
+VYetwuYcIVIQXvcuefZicT2v8YSdU3Gk02HeEN75ap6EdI9KF/WzjWtji0FpgCx9T1xukH
+pn9//xuloey2wAAACBAPWL2zSBotJBahiaPbMzcUsNAeRVa6WeLvoRtCtUTV9B1IGpu8x2
+eBZ0LC8lLmeqfkUQTau+OyoUjFv42JcabEpbGl5jdEZc8xxmxPmpfco+8XPsuv5KU8mliH
+SGh66bBvlbRvIsY3zIcz3cI3JU0p4o2Y7jtQQKu7rFOLl8Bx/XAAAAgQDhEW7eUVuFWzTT
+geTmAWHVz0uJN535Kg3xv/tVl8ENgjB9rRWuzmaaV0xZ++fBQYcX3Ob8J8jIgC9epgiv/j
+dLWezdutUkAeozK6DZs6Lc7q72MDab3PWVesAIPkbC7WayVkYn9LxwX5G/F3aF3dWV2/cs
+J/V/RGxZOVMarHjSXQAAAAxzcGx4QGRiLXNwbHgBAgMEBQ==
+-----END OPENSSH PRIVATE KEY-----
+        with:
+          source: "."
+          target: "/var/www/api.splx.site/"
+
+      - name: Executing remote  command
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          USERNAME: ${{ secrets.USERNAME }}
+          PORT: ${{ secrets.PORT }}
+          KEY: -----BEGIN OPENSSH PRIVATE KEY-----
+b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABFwAAAAdzc2gtcn
+NhAAAAAwEAAQAAAQEA1+CkSgnuZtODFS9RhWIwvgaTKChXqlrZGMDYRp67rspXRju9sZ3c
+CdWLpj6g+FY20cN+iHuwViQWVm1McxbDbEZtq9TLV/JP+HDoeW6+oUjEvZaehJvMSB/z9I
+/+0YRxwOzSdpdFl6+QLfeOdhN2u1HueaRRCs7O5d+TafgNbqP+drX1iRP0zCrMetCDsXa+
+7Q2LgnewdPJn3rIBmp35SbCTWQnf4W2BPX3CAN80gNWhCbPqIoNJmnF/JvoEhERJ6xrSxf
+QAAjq+gGMXbo4YRzKoMz0PWlqECIlFMsB7TrkDdndZDTfmViQ2Zj5Bwx8oOja5hwm4fGCW
+X6CxR3zvGwAAA8jL+zHxy/sx8QAAAAdzc2gtcnNhAAABAQDX4KRKCe5m04MVL1GFYjC+Bp
+MoKFeqWtkYwNhGnruuyldGO72xndwJ1YumPqD4VjbRw36Ie7BWJBZWbUxzFsNsRm2r1MtX
+8k/4cOh5br6hSMS9lp6Em8xIH/P0j/7RhHHA7NJ2l0WXr5At9452E3a7Ue55pFEKzs7l35
+Np+A1uo/52tfWJE/TMKsx60IOxdr7tDYuCd7B08mfesgGanflJsJNZCd/hbYE9fcIA3zSA
+1aEJs+oig0macX8m+gSEREnrGtLF9AACOr6AYxdujhhHMqgzPQ9aWoQIiUUywHtOuQN2d1
+kNN+ZWJDZmPkHDHyg6NrmHCbh8YJZfoLFHfO8bAAAAAwEAAQAAAQEAqu2Ix8LTTAF/Ud/U
+iWs0stFb5TkEKLOkH7BZzpjSfFRkBA07Zo5ackLuPuRp6hfBchd7ca+V8K7ELQx/ssS8WV
+fucFad5vXKkik8OSIRuHx4orDGtLLzbcw3ClaVaemXdC1Pe2zNQoxU+cCAwUcqBKmbzB7p
+uEgFlAeRnh8063tjWAjPSmMUwVfcgLrt5mBawGKNlg3f2sMcBOUNZKnulsxC9fsW1stRim
+ZOIQr7q4m31GSC2ontKm1Avo3wNW7aIdMiv4EW2HIbaj7VjYL9QUUE+fwnQRb7BRZ+XGd/
+i82OIjFjPubAet9oSjiAsu0s8bbfZ2n8HeEXgqzVZDrmOQAAAIEA4cIjE7gWb1cv2RApDb
+NNOK58cvlOLadQtOjMbRCpgGhN+u1/iUSQmb/UxiJN7EPYr3DhV08+N1IdQqEcWIxozYzx
+VYetwuYcIVIQXvcuefZicT2v8YSdU3Gk02HeEN75ap6EdI9KF/WzjWtji0FpgCx9T1xukH
+pn9//xuloey2wAAACBAPWL2zSBotJBahiaPbMzcUsNAeRVa6WeLvoRtCtUTV9B1IGpu8x2
+eBZ0LC8lLmeqfkUQTau+OyoUjFv42JcabEpbGl5jdEZc8xxmxPmpfco+8XPsuv5KU8mliH
+SGh66bBvlbRvIsY3zIcz3cI3JU0p4o2Y7jtQQKu7rFOLl8Bx/XAAAAgQDhEW7eUVuFWzTT
+geTmAWHVz0uJN535Kg3xv/tVl8ENgjB9rRWuzmaaV0xZ++fBQYcX3Ob8J8jIgC9epgiv/j
+dLWezdutUkAeozK6DZs6Lc7q72MDab3PWVesAIPkbC7WayVkYn9LxwX5G/F3aF3dWV2/cs
+J/V/RGxZOVMarHjSXQAAAAxzcGx4QGRiLXNwbHgBAgMEBQ==
+-----END OPENSSH PRIVATE KEY-----
+          script: cat /opt/app/README.md
