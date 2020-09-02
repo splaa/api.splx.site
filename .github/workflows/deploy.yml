@@ -17,7 +17,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           password: "splaa1977"
-#          key: ${{ secrets.SSHKEY }}
+          key: ${{ secrets.SSHKEY }}
         with:
           rm: true
           source: "."
@@ -31,5 +31,5 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           password: "splaa1977"
-#          key: ${{ secrets.SSHKEY }}
+          key: ${{ secrets.SSHKEY }}
           script: cat /opt/app/README.md
