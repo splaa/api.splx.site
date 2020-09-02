@@ -16,7 +16,7 @@ jobs:
           host: "splx.site"
           username: "splx"
           port: 22
-          password: "splaa1977"
+          key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDX4KRKCe5m04MVL1GFYjC+BpMoKFeqWtkYwNhGnruuyldGO72xndwJ1YumPqD4VjbRw36Ie7BWJBZWbUxzFsNsRm2r1MtX8k/4cOh5br6hSMS9lp6Em8xIH/P0j/7RhHHA7NJ2l0WXr5At9452E3a7Ue55pFEKzs7l35Np+A1uo/52tfWJE/TMKsx60IOxdr7tDYuCd7B08mfesgGanflJsJNZCd/hbYE9fcIA3zSA1aEJs+oig0macX8m+gSEREnrGtLF9AACOr6AYxdujhhHMqgzPQ9aWoQIiUUywHtOuQN2d1kNN+ZWJDZmPkHDHyg6NrmHCbh8YJZfoLFHfO8b splx@db-splx"
         with:
           rm: true
           source: "."
