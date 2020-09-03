@@ -33,6 +33,7 @@ Homestead.json
 out
 gen
 ### Composer template
-composer.phar
-/vendor/
+vendor
+
+public/*.log
 
