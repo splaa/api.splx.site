@@ -17,6 +17,7 @@ jobs:
           KEY: ${{ secrets.SSH_KEY }}
         with:
           overwrite: true
+          rm: true
           source: "./"
           target: "/var/www/api.splx.site"
       - name: Executing remote  command
