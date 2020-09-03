@@ -7,6 +7,7 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@master
       - name: Copy file via scp
         uses: appleboy/scp-action@master
         env:
@@ -16,7 +17,7 @@ jobs:
           KEY: ${{ secrets.SSH_KEY }}
         with:
           overwrite: true
-          source: "."
+          source: "./"
           target: "/var/www/api.splx.site"
       - name: Executing remote  command
         uses: appleboy/ssh-action@master
