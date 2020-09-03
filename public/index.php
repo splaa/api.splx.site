@@ -12,9 +12,8 @@ $user = new Hello();
 echo $user->name . '<br>';
 echo $user->email. '<br>';
 
-var_dump($log);
 
-echo "deploy v0.1" . '<br>';
+echo "deploy v0.2" . '<br>';
 echo "Api, Nginx and PHP !!!" . '<br>';
 
 
