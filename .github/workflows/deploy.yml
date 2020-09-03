@@ -27,4 +27,4 @@ jobs:
           USERNAME: ${{ secrets.USERNAME }}
           PORT: ${{ secrets.PORT }}
           KEY: ${{ secrets.SSH_KEY }}
-          script: cat /var/www/api.splx.site/README.md
+          script: cd /var/www/api.splx.site && composer install --optimize-autoloader --no-dev
