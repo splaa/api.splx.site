@@ -26,7 +26,6 @@ jobs:
           PORT: ${{ secrets.PORT }}
           KEY: ${{ secrets.SSH_KEY }}
           script: |
-            cp ~/sites/blog.splx.site/.env /var/www/api.splx.site/.env
             cd /var/www/api.splx.site
             composer install --optimize-autoloader --no-dev
 
