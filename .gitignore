@@ -36,4 +36,5 @@ gen
 vendor
 
 public/*.log
+storage/log/*.log
 
