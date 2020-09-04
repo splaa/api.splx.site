@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Validator;
 use App\User;
@@ -49,9 +48,7 @@ class AuthController extends Controller
 
     public function signup()
     {
-        echo 'hello';
-        die();
-        $user = new User([
+       $user = new User([
             'name' => 'test',
             'email' =>'test@gmail.com',
             'password' => bcrypt('splaa1977')
